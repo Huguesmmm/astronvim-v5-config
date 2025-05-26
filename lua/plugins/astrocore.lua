@@ -69,7 +69,45 @@ return {
           end,
           desc = "Close buffer from tabline",
         },
-
+        ["<Leader>ft"] = {
+          function()
+            require("snacks").picker.todo_comments { ---@diagnostic disable-line: undefined-field
+              keywords = { "TODO", "FIX", "FIXME" },
+              dirs = { vim.api.nvim_buf_get_name(0) },
+            }
+          end,
+          desc = "Search TODOs in current file",
+        },
+        -- Alternative to search TODOs in current file, less efficient than the one above
+        -- ["<Leader>ft"] = {
+        --   function()
+        --     local current_file_path = vim.fn.expand("%:p")
+        --     require("snacks").picker.todo_comments({keywords = {"TODO", "FIX", "FIXME"}, ---@diagnostic disable-line: undefined-field
+        --       transform = function(item)
+        --         local item_path = vim.fn.fnamemodify(item.cwd .. '/' .. item.file, ':p')
+        --         return item_path == current_file_path
+        --       end
+        --     })
+        --   end,
+        --   desc = "Search TODOs in current file",
+        -- },
+        --
+        ["dd"] = {
+          function()
+            local line = vim.fn.getline "."
+            return vim.trim(line) == "" and [["_dd]] or "dd"
+          end,
+          expr = true,
+          desc = "Delete line (no yank if empty)",
+        },
+        ["cc"] = {
+          function()
+            local line = vim.fn.getline "."
+            return vim.trim(line) == "" and [["_cc]] or "cc"
+          end,
+          expr = true,
+          desc = "Change line (no yank if empty)",
+        },
         -- ["<Leader>fw"] = {
         --   function ()
         --     require("")

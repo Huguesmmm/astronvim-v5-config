@@ -9,5 +9,7 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.color.transparent-nvim" },
   { import = "astrocommunity.pack.cpp" },
-  { import = "astrocommunity.motion.nvim-surround"}
+  { import = "astrocommunity.motion.nvim-surround" },
+  { import = "astrocommunity.markdown-and-latex.markview-nvim" },
+  { import = "astrocommunity.completion.supermaven-nvim" },
 }
