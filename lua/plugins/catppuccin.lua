@@ -38,6 +38,7 @@ return {
         return {
           LineNr = { fg = colors.overlay0 },
           NeoTreeDotfile = { fg = colors.overlay0 },
+          NeoTreeMessage = { fg = colors.surface2},
           SnacksPickerListCursorLine = { bg = "#223547" },
           SnacksPickerSelected = { fg = colors.lavender },
         }

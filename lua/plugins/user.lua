@@ -27,6 +27,9 @@ return {
       opts.picker = {
         enabled = true,
       }
+      opts.zen.win.width = function() return math.min(120, math.floor(vim.o.columns * 0.9)) end
+      opts.zen.win.height = 0.95
+      return opts
     end,
   },
   {
