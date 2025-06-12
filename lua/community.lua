@@ -12,4 +12,6 @@ return {
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.completion.supermaven-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.motion.flash-nvim" },
 }

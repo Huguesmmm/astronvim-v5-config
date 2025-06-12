@@ -1,22 +1,11 @@
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
--- Here are some examples:
-
 ---@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize dashboard options
   {
     "folke/snacks.nvim",
     opts = function(_, opts)
@@ -40,8 +29,6 @@ return {
       }
     end,
   },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
@@ -55,10 +42,28 @@ return {
     "folke/todo-comments.nvim",
     opts = function(_, opts)
       opts.search = opts.search or {}
-
       opts.search.pattern = [[\b(KEYWORDS)\s*:]]
 
       return opts
     end,
   },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          local maps = opts.mappings
+
+          maps.x["S"] = nil
+
+          maps.x["<leader>s"] = {
+            function() require("flash").treesitter() end,
+            desc = "Flash Treesitter Select",
+          }
+        end,
+      }
+    }
+  }
 }
